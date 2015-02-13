@@ -10,15 +10,15 @@
 
 close all;
 clear all;
-Img=imread('15-53-47_2.bmp');
+Img=imread('15-53-49_3mini.bmp');
 Img=double(Img(:,:,1));
 A=255;
 Img=A*Img/max(Img(:)); % rescale the image intensities
 nu=0.001*A^2; % coefficient of arc length term
 
 sigma = 4; % scale parameter that specifies the size of the neighborhood
-iter_outer=80; 
-iter_inner=10;   % inner iteration for level set evolution
+iter_outer=70; 
+iter_inner=15;   % inner iteration for level set evolution
 
 timestep=.1;
 mu=1;  % coefficient for distance regularization term (regularize the level set function)

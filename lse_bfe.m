@@ -49,10 +49,10 @@ for kk=1:iter_lse
     %figure,imagesc(penalizeTerm);
     c1=contour(u,[0 0]);
     [c1,k]=polyfitfig(c1);
-    k=k.^3;
+    k=k.^4;
     
      for i=1:size(c1,2)
-        penalizeTerm(round(c1(1,i)),round(c1(2,i)))=700*k(1,i)+penalizeTerm(round(c1(1,i)),round(c1(2,i)));
+        penalizeTerm(round(c1(1,i)),round(c1(2,i)))=100*k(1,i)+penalizeTerm(round(c1(1,i)),round(c1(2,i)));
     end
     %figure,imagesc(penalizeTerm);
     
