@@ -1,4 +1,4 @@
-function [C,k] = polyfitfig(c1)
+function [C,k,polyfitfigure] = polyfitfig(c1,u)
 orig = zeros(260,260);
 c1=[c1(2,:);c1(1,:)];
 [a,b]=find(c1==0 | c1 > 260);
@@ -14,8 +14,8 @@ for i=1:size(c1,2)
 end
 
 %figure,imshow(orig);
-step=50;
-polyfitfigure=zeros(260,260);
+step=30;
+polyfitfigure=zeros(size(u));
 k=[];
 for i=1:floor(size(c1,2)/step)
     b=polyfit(c1(1,(i-1)*step+1:i*step),c1(2,(i-1)*step+1:i*step),3);
@@ -44,10 +44,12 @@ k=[k,tmpk];
 k(:,b)=[];
 c1(:,b)=[];
 
-% for i=1:size(c1,2)
-%     polyfitfigure(round(c1(1,i)),round(c1(2,i)))=k(1,i);
-% end
-% figure,imagesc(polyfitfigure);
+for i=1:size(c1,2)
+    polyfitfigure(round(c1(1,i)),round(c1(2,i)))=abs(k(1,i).^4*300)*(-1);
+end
+w=fspecial('gaussian',[5 5],1);
+polyfitfigure=imfilter(polyfitfigure,w);
+%figure,imagesc(polyfitfigure);
 C=c1;
 end
 
