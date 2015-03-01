@@ -10,14 +10,16 @@
 
 close all;
 clear all;
-Img=imread('./pictures/1_2.bmp');
+Img=imread('./pictures/4_1.bmp');
 Img=double(Img(:,:,1));
+
+
 A=255;
 Img=A*Img/max(Img(:)); % rescale the image intensities
 nu=0.001*A^2; % coefficient of arc length term
 
 sigma = 4; % scale parameter that specifies the size of the neighborhood
-iter_outer=400; 
+iter_outer=200; 
 iter_inner=10;   % inner iteration for level set evolution
 
 timestep=.1;
@@ -27,9 +29,12 @@ c0=1;
 figure(1);
 imagesc(Img,[0, 255]); colormap(gray); axis off; axis equal
 
+% w=fspecial('gaussian',[3 3],1);
+% Img=imfilter(Img,w);
+
 % initialize level set function
 initialLSF = c0*ones(size(Img));
-initialLSF(30:70,60:90) = -c0;
+initialLSF(20:70,150:180) = -c0;
 u=initialLSF;
 
 hold on;

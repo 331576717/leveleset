@@ -14,7 +14,7 @@ for i=1:size(c1,2)
 end
 
 %figure,imshow(orig);
-step=30;
+step=20;
 polyfitfigure=zeros(size(u));
 k=[];
 for i=1:floor(size(c1,2)/step)
@@ -45,9 +45,9 @@ k(:,b)=[];
 c1(:,b)=[];
 
 for i=1:size(c1,2)
-    polyfitfigure(round(c1(1,i)),round(c1(2,i)))=abs(k(1,i).^4*120)*(-1);
+    polyfitfigure(round(c1(1,i)),round(c1(2,i)))=abs(k(1,i).^3*100)*(-1);
 end
-w=fspecial('gaussian',[5 5],1);
+w=fspecial('gaussian',[7 7],1);
 polyfitfigure=imfilter(polyfitfigure,w);
 %figure,imagesc(polyfitfigure);
 C=c1;
