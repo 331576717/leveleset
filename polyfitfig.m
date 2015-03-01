@@ -45,7 +45,7 @@ k(:,b)=[];
 c1(:,b)=[];
 
 for i=1:size(c1,2)
-    polyfitfigure(round(c1(1,i)),round(c1(2,i)))=abs(k(1,i).^4*300)*(-1);
+    polyfitfigure(round(c1(1,i)),round(c1(2,i)))=abs(k(1,i).^4*120)*(-1);
 end
 w=fspecial('gaussian',[5 5],1);
 polyfitfigure=imfilter(polyfitfigure,w);

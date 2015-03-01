@@ -10,14 +10,14 @@
 
 close all;
 clear all;
-Img=imread('line_circle.png');
+Img=imread('./pictures/1_2.bmp');
 Img=double(Img(:,:,1));
 A=255;
 Img=A*Img/max(Img(:)); % rescale the image intensities
 nu=0.001*A^2; % coefficient of arc length term
 
 sigma = 4; % scale parameter that specifies the size of the neighborhood
-iter_outer=70; 
+iter_outer=400; 
 iter_inner=10;   % inner iteration for level set evolution
 
 timestep=.1;
@@ -29,7 +29,7 @@ imagesc(Img,[0, 255]); colormap(gray); axis off; axis equal
 
 % initialize level set function
 initialLSF = c0*ones(size(Img));
-initialLSF(30:70,30:60) = -c0;
+initialLSF(30:70,60:90) = -c0;
 u=initialLSF;
 
 hold on;
